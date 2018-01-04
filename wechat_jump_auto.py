@@ -243,7 +243,32 @@ def main():
         ts = int(time.time())
         print(ts, piece_x, piece_y, board_x, board_y)
         set_button_position(im)
-        jump(math.sqrt((board_x - piece_x) ** 2 + (board_y - piece_y) ** 2))
+
+        distance = math.sqrt((board_x - piece_x) ** 2 + (board_y - piece_y) ** 2)
+        print("start-------- distance --------start: ", distance)
+        tmp = 0
+        if distance < 220:
+            tmp = 38
+            print("200-------- distance --------200:",tmp)
+        elif distance < 380:
+            tmp = 30
+            print("350-------- distance --------350:",tmp)
+        elif distance < 480 :
+            tmp = 25
+            print("465-------- distance --------465:",tmp)
+        elif distance < 515 :
+            tmp = 14
+            print("500-------- distance --------500:",tmp)
+        elif distance < 580 :
+            tmp = 12
+            print("540-------- distance --------540:",tmp)
+        elif distance < 635 :
+            tmp = 5
+            print("630-------- distance --------630:",tmp)
+        distance = distance + tmp
+        print("end-------- distance --------end: ", distance)
+
+        jump(distance)
         if debug_switch:
             debug.save_debug_screenshot(ts, im, piece_x, piece_y, board_x, board_y)
             debug.backup_screenshot(ts)
